@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIDER</title>
+    <link rel="icon" href="slider.png">
+    <style>
+        body{
+            background-image:  linear-gradient(to right, white, violet);
+        }
+        h1{
+            background-image: linear-gradient(to right, rgb(255, 182, 255), white);
+            box-shadow: 1px 1px rgb(230, 179, 230);
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: italic;
+            border: .5px solid violet;
+        }
+        h2{
+            text-align: center;
+            font-size: medium;
+            font: bold;
+        }
+        input{
+            display: none;
+        }
+        label{
+            font-size: x-large;
+        }
+        #im{
+            font-size: larger;
+            border-radius: 6px;
+            border: 1px dashed #999;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #im:hover{
+            color: rgb(48, 48, 48);
+            border: 1px dashed rgb(48, 48, 48);
+        }
+        a{
+            color: black;
+            background-image: linear-gradient(to right,violet,white);
+            border: 1px solid violet;
+            border-radius: 3px;
+            font-size: x-large;
+            text-decoration: none;
+            align-items: center;
+            margin: 10px;
+            box-shadow: 1px 1px violet;
+        }
+        @media screen and (max-width:600px){
+            h1{
+                font-size: medium;
+            }
+            h2{
+                font-size: 10px;
+                font-weight: bold;
+            }
+            video{
+                width: 250px;
+            }
+            a{
+                margin: 10px;
+                box-shadow: 1px 1px#999;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>SLIDER</h1>
+    <hr>
+    <h2>You can also make this type of SLIDER and you can send the website your friend and enjoy.</h2>
+    <hr>
+    <center>
+        <video autoplay muted loop>
+            <source src="WhatsApp Video 2023-09-28 at 9.04.33 PM.mp4" type="video/mp4">
+        </video>
+    </center>
+    <br>
+    <form id="imageUploadForm">
+        <center>
+            <input type="file" id="file1" accept="image/*">
+            <label>image1:</label>
+            <label id="im" for="file1">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file2" accept="image/*">
+            <label>image2:</label>
+            <label id="im" for="file2">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file3" accept="image/*">
+            <label>image3:</label>
+            <label id="im" for="file3">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file4" accept="image/*">
+            <label>image4:</label>
+            <label id="im" for="file4">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file5" accept="image/*">
+            <label>image5:</label>
+            <label id="im" for="file5">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file6" accept="image/*">
+            <label>image6:</label>
+            <label id="im" for="file6">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file7" accept="image/*">
+            <label>image7:</label>
+            <label id="im" for="file7">upload file</label>
+        </center>
+        <br>
+        <center>
+            <input type="file" id="file8" accept="image/*">
+            <label>image8:</label>
+            <label id="im" for="file8">upload file</label>
+        </center>
+    </form>
+    <br>
+    <br>
+    <center>
+        <a href="javascript:void(0);" onclick="transferImages()">MAKE A SLIDER</a>
+    </center>
+
+    <script>
+        // Function to store image data in localStorage
+        function transferImages() {
+            const imageUploadForm = document.getElementById('imageUploadForm');
+            const formData = new FormData(imageUploadForm);
+            const imageArray = [];
+
+            for (let i = 1; i <= 8; i++) {
+                const fileInput = document.getElementById(`file${i}`);
+                const file = fileInput.files[0];
+                
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                        imageArray.push(reader.result);
+                        localStorage.setItem('images', JSON.stringify(imageArray));
+                        
+                        // Redirect to target.html
+                        window.location.href = 'target.html';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
