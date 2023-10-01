@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIDER</title>
+    <link rel="icon" href="slider.png">
+    <link rel="stylesheet" href="Slider.css">
+</head>
+<body>
+    <center>
+        <div class="box">
+            <!-- Use unique IDs for each image container -->
+            <span style="--i:1"><img id="imagecontainer1"></span>
+            <span style="--i:2"><img id="imagecontainer2"></span>
+            <span style="--i:3"><img id="imagecontainer3"></span>
+            <span style="--i:4"><img id="imagecontainer4"></span>
+            <span style="--i:5"><img id="imagecontainer5"></span>
+            <span style="--i:6"><img id="imagecontainer6"></span>
+            <span style="--i:7"><img id="imagecontainer7"></span>
+            <span style="--i:8"><img id="imagecontainer8"></span>
+        </div>
+    </center>
+
+    <script>
+        // Function to retrieve and display images from localStorage
+        function displayImagesFromLocalStorage() {
+            const imageArray = JSON.parse(localStorage.getItem('images'));
+
+            if (imageArray) {
+                for (let i = 0; i < imageArray.length; i++) {
+                    const imageElement = document.getElementById(`imagecontainer${i + 1}`);
+                    imageElement.src = imageArray[i];
+                }
+            }
+        }
+
+        // Call the function to display images when the page loads
+        displayImagesFromLocalStorage();
+    </script>
+</body>
+</html>
